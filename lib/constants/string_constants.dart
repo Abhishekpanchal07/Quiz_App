@@ -23,6 +23,8 @@ class StringConstants {
   static const logout = "Logout";
   static const signInerror = "SignIn Error";
   static const ok = "Ok";
+  static const internetConnectionError =
+      "Please check your Internet Connection";
   static const userCancelSignIn = 'Sign-in was canceled by the user.';
   static String lastScoreText =
       "Great job! Your last score was ${getUserLastScore()} Out of 10. Can you beat it this time? Keep pushing your limits!";

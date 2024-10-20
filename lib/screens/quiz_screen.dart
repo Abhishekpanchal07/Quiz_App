@@ -31,7 +31,7 @@ class QuizScreen extends StatelessWidget {
             const SizedBox(height: 20),
             SizedBox(
               width: Get.size.width,
-              height: Get.size.height * 0.26,
+              height: Get.size.height * 0.33,
               child: ListView.builder(
                 itemCount:
                     (currentQuestion['answers'] as List<Map<String, Object>>)
@@ -106,7 +106,8 @@ class QuizScreen extends StatelessWidget {
                       child: commonButton(
                         buttonText: StringConstants.editAnswer,
                         width: 0.43,
-                        height: 0.045,
+                        height: 0.05,
+                        fontSize: 14,
                         onTap: quizController.previousQuestion,
                       ),
                     ),
@@ -122,7 +123,8 @@ class QuizScreen extends StatelessWidget {
                       child: commonButton(
                         buttonText: StringConstants.next,
                         width: 0.3,
-                        height: 0.045,
+                        height: 0.05,
+                         fontSize: 14,
                         onTap: quizController.nextQuestion,
                       ),
                     ),

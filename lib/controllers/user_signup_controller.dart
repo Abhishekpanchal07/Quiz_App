@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:quiz_app/common_helper/common_helper.dart';
@@ -15,26 +16,38 @@ class UserSignupController extends GetxController {
       showLoader.value = true;
       final googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
-         await setUserLogin();
-      showLoader.value = false;
-      Get.off(() => StartQuizScreen());
+        await setUserLogin();
+        showLoader.value = false;
+        Get.off(() => StartQuizScreen());
       } else {
-      
-      showLoader.value = false;
+        showLoader.value = false;
+        Get.context != null
+            ? showAlertDialog(
+                Get.context!,
+                title: StringConstants.signInerror,
+                content: StringConstants.userCancelSignIn,
+                istButtontext: "",
+                secondButtontext: StringConstants.ok,
+                onsecondButtonTap: () => Get.back(),
+              )
+            : debugPrint(StringConstants.userCancelSignIn);
+      }
+    } on PlatformException{
+       showLoader.value = false;
        Get.context != null
           ? showAlertDialog(
               Get.context!,
               title: StringConstants.signInerror,
-              content: StringConstants.userCancelSignIn,
-              istButtontext: "",
+              content: StringConstants.internetConnectionError,
+              istButtontext: "", 
               secondButtontext: StringConstants.ok,
               onsecondButtonTap: () => Get.back(),
             )
-          : 
-      debugPrint(StringConstants.userCancelSignIn);
+          : debugPrint(StringConstants.internetConnectionError);
     }
-     
-    } catch (error) {
+     catch (error) {
+      showLoader.value = false;
+      debugPrint("googleSignInError:${error.toString()}");
       Get.context != null
           ? showAlertDialog(
               Get.context!,
@@ -44,7 +57,7 @@ class UserSignupController extends GetxController {
               secondButtontext: StringConstants.ok,
               onsecondButtonTap: () => Get.back(),
             )
-          : debugPrint(error.toString());
+          : debugPrint("googleSignInError:${error.toString()}");
     }
   }
 }

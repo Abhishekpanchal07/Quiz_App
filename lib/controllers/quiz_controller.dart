@@ -56,7 +56,7 @@ class QuizController extends GetxController {
       selectedOption.value =
           selectedAnswers[questionIndex.value]; // Restore selected option
     } else {
-      final controller = Get.find<StartQuizController>();
+      final controller = Get.put(StartQuizController());
       controller.userLastScore.value = score.value;
       clearUserLastScore();
       storeUserLastScore(score.value);

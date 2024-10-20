@@ -72,7 +72,8 @@ Widget commonButton(
     {String? buttonText,
     VoidCallback? onTap,
     num height = 0.05,
-    num width = 0.5}) {
+    num width = 0.5,
+    double? fontSize}) {
   return GestureDetector(
     onTap: onTap ?? () {},
     child: Container(
@@ -82,10 +83,13 @@ Widget commonButton(
       decoration: BoxDecoration(
           color: Colors.black, borderRadius: BorderRadius.circular(10)),
       child: Center(
-        child: Text(
-          buttonText ?? StringConstants.tapMe,
-          style: const TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            buttonText ?? StringConstants.tapMe,
+            style:  TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white, fontSize: fontSize ?? 16),
+          ),
         ),
       ),
     ),
