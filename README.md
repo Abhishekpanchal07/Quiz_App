@@ -24,7 +24,7 @@ The following external packages are used in this project:
 
 You can view a walkthrough of the entire platform by clicking the link below:
 
-[Quiz App Walkthrough](https://drive.google.com/dummy-link-to-screen-recording)
+[Quiz App Walkthrough](https://drive.google.com/file/d/1SNVQyIjKRqz6uxGQSzllxiMd_QBLUYWa/view?usp=sharing)
 
 ## Getting Started
 
